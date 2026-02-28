@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_blog_blog_sections",
+  "info": {
+    "displayName": "Blog Section",
+    "description": "Configurable section for the blog homepage"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "sourceType": {
+      "type": "enumeration",
+      "enum": ["category", "manual", "latest", "tag"]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
+    "tag": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tag.tag"
+    },
+    "manualPosts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog-post.blog-post"
+    },
+    "maxItems": {
+      "type": "integer",
+      "default": 6
+    },
+    "sortBy": {
+      "type": "enumeration",
+      "enum": ["dateDesc", "dateAsc"]
+    }
+  }
+}

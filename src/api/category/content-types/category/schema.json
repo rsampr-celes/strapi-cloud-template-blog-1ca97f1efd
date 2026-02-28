@@ -5,7 +5,7 @@
     "singularName": "category",
     "pluralName": "categories",
     "displayName": "Category",
-    "description": "Organize your content into categories"
+    "description": "Organize blog posts into categories"
   },
   "options": {
     "draftAndPublish": false
@@ -13,10 +13,17 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "name",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "text"
     },
     "articles": {
       "type": "relation",
@@ -24,8 +31,11 @@
       "target": "api::article.article",
       "mappedBy": "category"
     },
-    "description": {
-      "type": "text"
+    "blogPosts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog-post.blog-post",
+      "mappedBy": "category"
     }
   }
 }

@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "blog_home_pages",
+  "info": {
+    "singularName": "blog-home-page",
+    "pluralName": "blog-home-pages",
+    "displayName": "Blog Home Page",
+    "description": "Homepage configuration for the blog"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroMode": {
+      "type": "enumeration",
+      "enum": ["autoLatest", "manual"]
+    },
+    "manualLatestPost": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog-post.blog-post"
+    },
+    "featuredPosts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog-post.blog-post"
+    },
+    "sections": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blog.blog-section"
+    }
+  }
+}
