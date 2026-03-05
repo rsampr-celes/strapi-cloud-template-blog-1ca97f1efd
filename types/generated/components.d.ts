@@ -23,6 +23,33 @@ export interface BlogBlogSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlogTopicSection extends Struct.ComponentSchema {
+  collectionName: 'components_blog_topic_sections';
+  info: {
+    description: 'Structured section for blog post topic lists';
+    displayName: 'Topic Section';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedImageBlock extends Struct.ComponentSchema {
+  collectionName: 'components_shared_image_blocks';
+  info: {
+    description: 'Reusable image block for mixed-content blog sections';
+    displayName: 'Image Block';
+    icon: 'landscape';
+  };
+  attributes: {
+    altText: Schema.Attribute.String;
+    caption: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -58,6 +85,18 @@ export interface SharedRichText extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedRichTextBlock extends Struct.ComponentSchema {
+  collectionName: 'components_shared_rich_text_blocks';
+  info: {
+    description: 'Reusable rich text block for mixed-content blog sections';
+    displayName: 'Rich Text Block';
+    icon: 'align-justify';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedSeo extends Struct.ComponentSchema {
   collectionName: 'components_shared_seos';
   info: {
@@ -89,9 +128,12 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'blog.blog-section': BlogBlogSection;
+      'blog.topic-section': BlogTopicSection;
+      'shared.image-block': SharedImageBlock;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
+      'shared.rich-text-block': SharedRichTextBlock;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
     }

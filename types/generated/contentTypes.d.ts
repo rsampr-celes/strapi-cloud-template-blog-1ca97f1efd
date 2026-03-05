@@ -481,11 +481,16 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
   };
   attributes: {
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
-    content: Schema.Attribute.RichText & Schema.Attribute.Required;
+    conclusion: Schema.Attribute.Blocks;
+    content: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    descriptionBlocks: Schema.Attribute.DynamicZone<
+      ['shared.rich-text-block', 'shared.image-block']
+    >;
     featuredImage: Schema.Attribute.Media<'images'>;
+    heroImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     isFeatured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -495,16 +500,23 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     publishedDate: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'title'> &
+    slug: Schema.Attribute.UID<'topic'> &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    summary: Schema.Attribute.Text & Schema.Attribute.Required;
+    summary: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 600;
+      }>;
     tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
     thumbnailImage: Schema.Attribute.Media<'images'>;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String;
+    topic: Schema.Attribute.String & Schema.Attribute.Required;
+    topics: Schema.Attribute.Component<'blog.topic-section', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    writtenBy: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 

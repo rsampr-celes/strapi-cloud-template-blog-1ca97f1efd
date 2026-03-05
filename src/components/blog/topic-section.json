@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blog_topic_sections",
+  "info": {
+    "displayName": "Topic Section",
+    "description": "Structured section for blog post topic lists"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

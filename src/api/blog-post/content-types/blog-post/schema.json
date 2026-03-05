@@ -13,22 +13,47 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
+      "type": "string"
+    },
+    "topic": {
       "type": "string",
       "required": true
     },
     "slug": {
       "type": "uid",
-      "targetField": "title",
+      "targetField": "topic",
       "required": true,
       "unique": true
     },
     "summary": {
       "type": "text",
+      "required": true,
+      "maxLength": 600
+    },
+    "writtenBy": {
+      "type": "string",
       "required": true
     },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "descriptionBlocks": {
+      "type": "dynamiczone",
+      "components": ["shared.rich-text-block", "shared.image-block"]
+    },
+    "topics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blog.topic-section"
+    },
+    "conclusion": {
+      "type": "blocks"
+    },
     "content": {
-      "type": "richtext",
-      "required": true
+      "type": "richtext"
     },
     "publishedDate": {
       "type": "datetime"
