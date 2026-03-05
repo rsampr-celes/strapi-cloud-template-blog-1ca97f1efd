@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_image_blocks",
+  "info": {
+    "displayName": "Image Block",
+    "icon": "landscape",
+    "description": "Reusable image block for mixed-content blog sections"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "caption": {
+      "type": "string"
+    },
+    "altText": {
+      "type": "string"
+    }
+  }
+}

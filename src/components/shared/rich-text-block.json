@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_rich_text_blocks",
+  "info": {
+    "displayName": "Rich Text Block",
+    "icon": "align-justify",
+    "description": "Reusable rich text block for mixed-content blog sections"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}
